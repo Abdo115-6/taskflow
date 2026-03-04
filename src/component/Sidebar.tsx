@@ -5,16 +5,16 @@ interface SidebarProps { projects: Project[]; isOpen: boolean; }
   
 export default function Sidebar({ projects, isOpen }: SidebarProps) { 
   return ( 
-    <aside className={`${styles.sidebar} ${isOpen ? styles.open : styles.closed}`}> 
-      <h2 className={styles.title}>Mes Projets</h2> 
-      <ul className={styles.list}> 
+    <aside className={`${styles.sidebar} ${isOpen ? styles.visible : styles.hidden}`}> 
+      <h2 style={{ marginBottom: '20px', fontSize: '18px', color: '#333' }}>Mes Projets</h2> 
+      <div className={styles.projectList}> 
         {projects.map(p => ( 
-          <li key={p.id} className={styles.item}> 
-            <span className={styles.dot} style={{ background: p.color }} /> 
-            {p.name} 
-          </li> 
+          <div key={p.id} className={styles.projectItem}> 
+            <span className={styles.projectColor} style={{ backgroundColor: p.color }} /> 
+            <span className={styles.projectName}>{p.name}</span>
+          </div> 
         ))} 
-      </ul>     
+      </div>     
     </aside> 
   ); 
 } 
